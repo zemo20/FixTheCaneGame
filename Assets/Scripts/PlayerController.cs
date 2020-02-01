@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour,IHittable
     private Color glowColor1;
     private Color glowColor2;
     public bool isAttacking;
+
     // Start is called before the first frame update
     void Start()
     {

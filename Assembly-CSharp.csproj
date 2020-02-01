@@ -61,6 +61,7 @@
      <Compile Include="Assets\Art\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
      <Compile Include="Assets\Art\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
      <Compile Include="Assets\Enemy.cs" />
+     <Compile Include="Assets\EnemyCombat.cs" />
      <Compile Include="Assets\PlayerCombat.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />

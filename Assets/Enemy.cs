@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour
     {
         if (!hasDied)
         {
-        DecreaseHealth(damageTaken);
-        //KnockBack();
-        //Glow();
-        //canMoveAgain = Time.time + knockoutTime;
-        Debug.Log(currentHealth);
+            DecreaseHealth(damageTaken);
+            //KnockBack();
+            //Glow();
+            //canMoveAgain = Time.time + knockoutTime;
+            Debug.Log(currentHealth);
         }
     }
 
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        //hasDied = true;
+        hasDied = true;
         gameObject.SetActive(false);
         //GetComponent<Collider2D>().enabled = false;
         //this.enabled = false;

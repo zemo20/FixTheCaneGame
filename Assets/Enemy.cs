@@ -7,10 +7,36 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     bool hasDied = false;
+
+    private float walkingSpeed = 4.0f;
+    private float runningSpeed = 8.0f;
+    public float knockoutTime = 0.5f;
+    private float canMoveAgain;
+    private Rigidbody2D enemyRb;
+    private SpriteRenderer spriteRenderer;
+    private float previousXLocation;
+    private float lookDirection;
+    private Animator animator;
+    public float health = 100;
+    public float knockBackForce = 20f;
+    private float onHitGlowTime = 2f;
+    private float stopGlowTime = 0f;
+    private bool is_glowing = false;
+    private float basicAttackCooldown = 0.5f;
+    private float nextBasicAttack = 0f;
+    private Color glowColor1;
+    private Color glowColor2;
+    public bool isAttacking;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        enemyRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        glowColor1 = new Color(1f, 1f, 1f);
+        glowColor2 = new Color(255f / 255f, 180f / 255f, 180f / 255f);
     }
 
     public void GetHit(int damageTaken)
@@ -18,9 +44,9 @@ public class Enemy : MonoBehaviour
         if (!hasDied)
         {
             DecreaseHealth(damageTaken);
-            //KnockBack();
-            //Glow();
-            //canMoveAgain = Time.time + knockoutTime;
+            KnockBack();
+            Glow();
+            canMoveAgain = Time.time + knockoutTime;
             Debug.Log(currentHealth);
         }
     }
@@ -34,7 +60,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    /*
+    
     void KnockBack()
     {
         enemyRb.AddForce(new Vector2(knockBackForce * transform.localScale.x, knockBackForce / 2), ForceMode2D.Impulse);
@@ -50,8 +76,6 @@ public class Enemy : MonoBehaviour
         {
             stopGlowTime = Time.time + onHitGlowTime;
         }
-
-
     }
 
     IEnumerator ChangeColors()
@@ -71,7 +95,7 @@ public class Enemy : MonoBehaviour
         is_glowing = false;
         spriteRenderer.color = glowColor1;
     }
-    */
+    
 
     void Die()
     {

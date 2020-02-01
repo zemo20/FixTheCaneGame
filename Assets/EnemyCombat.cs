@@ -17,8 +17,8 @@ public class EnemyCombat : MonoBehaviour
 
     void Attack()
     {
-        Collider2D hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackrange);
-            if (hitPlayer.CompareTag("Player"))
-                hitPlayer.GetComponent<PlayerController>().GetHit(attackDamage);
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackrange);
+            if (hitPlayer[0].CompareTag("Player"))
+                hitPlayer[0].GetComponent<PlayerController>().GetHit(attackDamage);
     }
 }

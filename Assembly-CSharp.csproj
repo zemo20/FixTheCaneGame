@@ -63,11 +63,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Art\Gordo\Demo\Prefabs\DAChkBox\Scripts\DAChkBox.cs" />
+    <Compile Include="Assets\Art\Gordo\Demo\Scripts\GordoDemo.cs" />
+    <Compile Include="Assets\Art\Gordo\Prefabs\DALogo\Scripts\DALogo.cs" />
+    <Compile Include="Assets\Art\Gordo\Prefabs\DASkeleton\Scripts\DALimb.cs" />
+    <Compile Include="Assets\Art\Gordo\Prefabs\DASkeleton\Scripts\DASkeleton.cs" />
+    <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Hittable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHittable.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Weapon.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

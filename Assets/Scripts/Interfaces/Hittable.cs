@@ -1,4 +1,4 @@
-﻿interface Hittable<T>
+﻿interface IHittable
 {
-    bool Equals(T obj);
+    void GetHit(float DamageTaken);
 }

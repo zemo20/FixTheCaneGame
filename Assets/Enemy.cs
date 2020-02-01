@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private float runningSpeed = 8.0f;
     public float knockoutTime = 0.5f;
     private float canMoveAgain;
-    private Rigidbody2D playerRb;
+    private Rigidbody2D enemyRb;
     private SpriteRenderer spriteRenderer;
     private float previousXLocation;
     private float lookDirection;
@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyRb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -57,6 +58,7 @@ public class Enemy : MonoBehaviour
             KnockBack();
             Glow();
             canMoveAgain = Time.time + knockoutTime;
+            Debug.Log(health);
         }
     }
 
@@ -71,11 +73,11 @@ public class Enemy : MonoBehaviour
     }
     void KnockBack()
     {
-        playerRb.AddForce(new Vector2(knockBackForce * -lookDirection, knockBackForce / 2), ForceMode2D.Impulse);
+        enemyRb.AddForce(new Vector2(knockBackForce * transform.localScale.x, knockBackForce / 2), ForceMode2D.Impulse);
     }
     void Glow()
     {
-        if (!is_glowing)
+        if (!is_glowing&& !hasDied)
         {
             StartCoroutine("ChangeColors");
         }
@@ -109,6 +111,6 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         hasDied = true;
-        animator.SetBool("hasDied", true);
+        gameObject.SetActive(false);
     }
 }

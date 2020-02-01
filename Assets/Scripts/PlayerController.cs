@@ -20,8 +20,11 @@ public class PlayerController : MonoBehaviour,IHittable
     private float stopGlowTime = 0f;
     private bool is_glowing = false;
     private bool hasDied;
+    private float basicAttackCooldown = 0.5f;
+    private float nextBasicAttack = 0f;
     private Color glowColor1;
     private Color glowColor2;
+    public bool isAttacking;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour,IHittable
         checkDirection();
         moveCharacter();
         checkInteractables();
+        attack();
     }
 
 
@@ -56,6 +60,23 @@ public class PlayerController : MonoBehaviour,IHittable
         }
     }
 
+    void attack()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Time.time > nextBasicAttack)
+        {
+            Debug.Log("here");
+            isAttacking = true;
+            //StartCoroutine("stopAttacking");
+            nextBasicAttack = Time.time + basicAttackCooldown;
+        }
+    }
+
+    IEnumerator stopAttacking()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isAttacking = false;
+    }
     void moveCharacter()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
